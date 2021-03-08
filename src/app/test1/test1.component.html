@@ -1,0 +1,24 @@
+<p>test1 works!</p>
+
+<form [formGroup]="form">
+  <input type="text" formControlName="name" />
+  <br />
+  <input type="number" formControlName="age" />
+  <br />
+  <input type="text" formControlName="gender" />
+  <div formArrayName="phones">
+    <div *ngFor="let phone of phones.controls; let i = index">
+      <div [formGroupName]="i">
+        <input type="text" formControlName="type" />
+        <br />
+        <input type="number" formControlName="num" />
+        <br />
+        <button (click)="insert(i)">+</button>
+        <br />
+        <button (click)="delete(i)">-</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<pre>{{ form.value | json }}</pre>

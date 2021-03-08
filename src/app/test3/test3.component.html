@@ -1,0 +1,21 @@
+<p>test3 works!</p>
+
+<form [formGroup]="newForm">
+  <div>
+    <input type="text" formControlName="adress" />
+    <input type="text" formControlName="city" />
+  </div>
+  <div
+    *ngFor="let attachment of attachments.controls; let i = index"
+    formArrayName="attachments"
+  >
+    <div [formGroupName]="i">
+      <input type="text" formControlName="type" />
+      <input type="text" formControlName="color" />
+      <button (click)="add()">Add</button>
+      <button (click)="delete()">Delete</button>
+    </div>
+  </div>
+</form>
+
+<pre>{{ newForm.value | json }}</pre>
